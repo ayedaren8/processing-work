@@ -14,60 +14,31 @@ import java.io.IOException;
 
 public class vsPDE extends PApplet {
 
-class Pvector {
-
-  float x, y;
-  Pvector(float x_, float y_) {
-    x=x_;
-    y=y_;
-  };
-  public void sub(Pvector v ) {
-    y=y-v.y;
-    x=x-v.x;
-  }
-  public float mag() {
-    return sqrt(x*x+y*y);
-  }
-  public void mult(float n) {
-    x=x*n;
-    y=y*n;
-  }
-  public void div(float n) {
-    x=x/n;
-    y=y/n;
-  }
-  public void narmalize() {
-    float m=mag();
-    if (m!=0) {
-      div(m);
-    }
-  }
-};
+float startAngle = 0.0f;
+float vAngle = 0.2f;
 
 
-Pvector center;
-Pvector mouse;
-
-public void setup()
-{
+public void setup() {
   
-};
+    background(255);
+  // fill(0, 255, 255);
+
+
+  // background(0);
+}
 
 public void draw() {
-  //background(255);
+  background(255);
+  float angle=startAngle;
+  for (int x = 0; x <= width; x+=5) {
+  float y=map(100*sin(angle), -100, 100, height/2-100, height/2+100);
+  ellipse(x, y, 5, 5);
+  angle+=vAngle;
+}  
+startAngle+=0.2f;
 
-  
-  center =new Pvector(width/2, height/2);
-  mouse =new Pvector(mouseX, mouseY);
-  mouse.sub(center);
-  mouse.narmalize();
-  mouse.mult(150);
-  translate(width/2, height/2);
-  line(0, 0, mouse.x, mouse.y);
-  float m=mouse.mag();
-  println(m);
 }
-  public void settings() {  size(480, 480); }
+  public void settings() {  size(512, 512); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "vsPDE" };
     if (passedArgs != null) {
