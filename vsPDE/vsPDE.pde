@@ -1,24 +1,51 @@
-float startAngle = 0.0;
-float vAngle = 0.2;
+class Pendulum {
+  float r;
+  float angle;
+  float aVeloctiy;
+  float aAcceleration;
+  float damping;
+  PVector location;
+  PVector origin;
+  Pendulum(PVector origin_, float r_) {
+    origin = origin_.get();
+    location = new PVector();
+    r = r_;
+    angle = PI / 4;
+    aVeloctiy = 0.0;
+    damping = 0.995;
+  }
+  void go() {
+    update();
+    display();
+  }
 
 
+  void update() {
+    float gravity = 0.4;
+    aAcceleration = (- 1* gravity / r) * sin(angle);
+    aVeloctiy += aAcceleration;
+    angle += aVeloctiy;
+    aVeloctiy *= damping;
+
+
+  }
+  void display(){
+  location.set(r * sin(angle), r * cos(angle));
+  location.add(origin);
+  stroke(0);
+  line(origin.x, origin.y, location.x, location.y); 
+  fill(175); 
+  ellipse(location.x, location.y, 16, 16);
+  }
+  }
+
+Pendulum p;
 void setup() {
   size(512, 512);
-    background(255);
-  // fill(0, 255, 255);
-
-
-  // background(0);
+  p=new Pendulum(new PVector(width/2,10),125);
 }
 
 void draw() {
-  background(255);
-  float angle=startAngle;
-  for (int x = 0; x <= width; x+=5) {
-  float y=map(100*sin(angle), -100, 100, height/2-100, height/2+100);
-  ellipse(x, y, 5, 5);
-  angle+=vAngle;
-}  
-startAngle+=0.2;
-
+  background(255);  
+  p.go();
 }

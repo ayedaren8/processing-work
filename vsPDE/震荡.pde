@@ -21,6 +21,7 @@ class Oscillator{
     line(0, 0, x, y);
     ellipse(x, y, 16, 16);
     popMatrix();
+    
   }
 
 }
@@ -33,8 +34,7 @@ void setup() {
 }
 
 void draw() {
-                                                                    
-background(255, 255, 255, 100);
+  background(255, 255, 255, 100);
   m.Oscillate();
   m.display();
 
