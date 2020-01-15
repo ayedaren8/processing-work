@@ -1,11 +1,9 @@
 float startAngle = 0.0;
 float vAngle = 0.2;
-
 void setup() {
     size(512, 512);
     background(255);
 }
-
 void draw() {
     background(255);
     float angle = startAngle;

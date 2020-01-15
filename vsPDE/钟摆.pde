@@ -18,16 +18,12 @@ class Pendulum {
         update();
         display();
     }
-
-
     void update() {
         float gravity = 0.4;
         aAcceleration = (-1 * gravity / r) * sin(angle);
         aVeloctiy += aAcceleration;
         angle += aVeloctiy;
         aVeloctiy *= damping;
-        
-
     }
     void display() {
         location.set(r * sin(angle), r * cos(angle));
@@ -38,14 +34,11 @@ class Pendulum {
         ellipse(location.x, location.y, 16, 16);
     }
 }
-
-
 Pendulum p;
 void setup() {
     size(512, 512);
     p = new Pendulum(new PVector(width / 2, 10), 125);
 }
-
 void draw() {
     background(255);
     p.go();

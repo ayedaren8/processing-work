@@ -2,7 +2,6 @@ class Oscillator{
   PVector angle;
   PVector velocity;
   PVector amplitude;
-
   Oscillator(){
     angle=new PVector();
     velocity=new PVector(random(-0.05, 0.05),random(-0.05, 0.05));
@@ -21,21 +20,16 @@ class Oscillator{
     line(0, 0, x, y);
     ellipse(x, y, 16, 16);
     popMatrix();
-    
   }
-
 }
-
 Oscillator m;
 void setup() {
   size(512, 512);
   background(255, 255, 255, 100);
   m=new Oscillator();
 }
-
 void draw() {
   background(255, 255, 255, 100);
   m.Oscillate();
   m.display();
-
 }
