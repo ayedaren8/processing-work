@@ -19,7 +19,7 @@ class Particle {
   void display() {
     stroke(0, lifespan);
     fill(175, lifespan);
-    ellipse(location.x, location.y, mass*2, mass*2);
+    ellipse(location.x, location.y, mass * 2, mass * 2);
   }
   void run() {
     // applyForce();
@@ -52,8 +52,8 @@ class Particle {
     }
   }
 }
+
 int total = 10;
-// Particle[] pList=new Particle[total];  
 ArrayList < Particle > pList;
 void setup() {
   size(512, 512);
@@ -62,11 +62,11 @@ void setup() {
 void draw() {
   background(255);
   pList.add(new Particle());
-  for (int i=pList.size()-1;i>=0;i--) {
-    Particle p=pList.get(i);
+  for (int i = pList.size() - 1; i >= 0; i--) {
+    Particle p = pList.get(i);
     p.run();
     if (p.isDead()) {
-        pList.remove(i);
+      pList.remove(i);
     }
   }
 }
